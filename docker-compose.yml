@@ -1,0 +1,16 @@
+services:
+  base_de_datos:
+    image: postgres:16
+    container_name: levain-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USUARIO}
+      POSTGRES_PASSWORD: ${DB_CLAVE}
+      POSTGRES_DB: ${DB_NOMBRE}
+    ports:
+      - "${DB_PUERTO}:5432"
+    volumes:
+      - levain_datos:/var/lib/postgresql/data
+
+volumes:
+  levain_datos:
